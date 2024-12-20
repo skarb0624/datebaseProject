@@ -8,4 +8,4 @@
 
 3단계 논리적 설계
 
-[데이터 베이스 릴레이션.xlsx](https://github.com/user-attachments/files/18207331/default.xlsx)
+![image](https://github.com/user-attachments/assets/7024fedf-f3b9-4919-8117-f30b307fd7f1)
