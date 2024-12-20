@@ -10,7 +10,7 @@ public class developerMain {
             System.out.println(developers);
         }
         System.out.println("\n개발사 이름으로 정보 검색하기\n");
-        developer developer_name = developerService.selectById("회사1");
+        developer developer_name = developerService.selectById("개발사1");
         if (developer_name != null) {
             System.out.println(developer_name);
         } else {
@@ -18,8 +18,8 @@ public class developerMain {
         }
 
         System.out.println("\n새로운 개발사를 추가하기\n");
-        if (developerService.insert("회사1", "20221007@edu.hanbat.ac.kr", "010-0000-1111")>0) {
-            developer developers = developerService.selectById("회사1");
+        if (developerService.insert("개발사1", "20221007@edu.hanbat.ac.kr", "010-0000-1111")>0) {
+            developer developers = developerService.selectById("개발사1");
             if (developers != null) {
                 System.out.println(developers);
             } else {
