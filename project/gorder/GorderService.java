@@ -30,7 +30,7 @@ public class GorderService {
         List<Gorder> gorderList = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(Conf.DB_URL, Conf.DB_USER, Conf.DB_PASSWORD)) {
-            String query = "SELECT O.*  "
+            String query = "SELECT O.* FROM gcustomer C, gorder O, game G  "
                     + "WHERE C.customer_id = O.customer_id AND O.game_number = G.game_number";
             psmtQuery = conn.prepareStatement(query);
             rs = psmtQuery.executeQuery();
