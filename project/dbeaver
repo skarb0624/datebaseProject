@@ -1,0 +1,46 @@
+--- 게임 릴레이션
+CREATE TABLE game
+(
+-- 게임번호를 정수형 데이터로 NULL이 입력되는 것을 허용하지 않음
+game_number INTEGER NOT null,
+-- 게임명을 문자형 데이터로 최대 길이 20으로 NULL이 입력되는 것을 허용하지 않음
+game_name VARCHAR(20) NOT null,
+-- 평가를 문자형 데이터의 최대 길이를 20으로 설정
+review VARCHAR (20),
+-- 개발사명을 문자형 데이터로 최대 길이 20으로 NULL이 입력되는 것을 허용하지 않음
+developer_name VARCHAR (20) NOT NULL,
+-- 제한연령을 정수형 데이터로 NULL이 입력되는 것을 허용하지 않음
+age_limit INTEGER DEFAULT 0,
+-- 업로드 날짜를 데이터형으로 설정
+upload_date DATE NOT null,
+-- 기본키를 game_number 설정
+PRIMARY KEY (game_number) ,
+-- 외래키 설정, developer : developer_name
+FOREIGN KEY (developer_name) REFERENCES developer(developer_name),
+-- review에 대한 제약 조건 
+CHECK (review IN('A','B','C','D','E')) ,
+-- age_limit에 대한 제약 조건
+CHECK (age_limit=0 or age_limit = 12 or age_limit = 15 OR age_limit =19)
+);
+
+CREATE table genre(
+-- 게임번호 정수형 데이터으로 NULL이 입력되는 것을 허용하지 않음
+game_number integer NOT NULL, 
+-- 장르를 문자형 데이터로 최대 길이 20으로 NULL이 입력되는 것을 허용하지 않음
+genre varchar(20) NOT NULL, 
+-- 기본키를 game_number 설정
+PRIMARY KEY (game_number),
+-- 외래키 설정, game : game_number
+FOREIGN KEY (game_number) REFERENCES game(game_number)
+)
+
+CREATE TABLE DLC(
+-- 게임번호 정수형 데이터으로 NULL이 입력되는 것을 허용하지 않음
+game_number integer NOT NULL,
+-- DLC이름을 문자형 데이터로 최대 길이 20으로 NULL이 입력되는 것을 허용하지 않음
+DLC_name varchar(20) NOT NULL,
+-- 기본키를 game_number 설정
+PRIMARY KEY (game_number),
+-- 외래키 설정, game : game_number
+FOREIGN KEY (game_number) REFERENCES game(game_number)
+)
