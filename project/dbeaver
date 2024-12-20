@@ -1,3 +1,17 @@
+
+--- developer 개발사 릴레이션
+CREATE  TABLE  developer
+(
+-- 개발사명을 문자형 데이터로 최대 길이 20으로 NULL이 입력되는 것을 허용하지 않음
+developer_name varchar(20) NOT NULL,
+-- 개발사 주소를 문자형 데이터로 최대 길이 40으로 NULL이 입력되는 것을 허용하지 않음
+developer_email varchar(40) NOT NULL,
+-- 전화번호를 문자형 데이터로 최대 길이 20으로 NULL이 입력되는 것을 허용하지 않음
+phone_number varchar(20) NOT NULL,
+-- developer_name 기본키로 설정
+PRIMARY KEY (developer_name)
+)
+
 --- 게임 릴레이션
 CREATE TABLE game
 (
