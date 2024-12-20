@@ -30,7 +30,7 @@ public class GorderService {
         List<Gorder> gorderList = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(Conf.DB_URL, Conf.DB_USER, Conf.DB_PASSWORD)) {
-            String query = "SELECT O.*, customer_id, game_number FROM gcustomer C, gorder O, game G "
+            String query = "SELECT O.*  "
                     + "WHERE C.customer_id = O.customer_id AND O.game_number = G.game_number";
             psmtQuery = conn.prepareStatement(query);
             rs = psmtQuery.executeQuery();
@@ -65,7 +65,7 @@ public class GorderService {
         PreparedStatement psmtQuery = null;
 
         try (Connection conn = DriverManager.getConnection(Conf.DB_URL, Conf.DB_USER, Conf.DB_PASSWORD)) {
-            String query = "SELECT O.*, customer_id, game_number FROM gcustomer C, gorder O, game G "
+            String query = "SELECT O.* FROM gcustomer C, gorder O, game G "
                     + "WHERE C.customer_id = O.customer_id AND O.game_number = G.game_number AND O.order_number = ?";
             psmtQuery = conn.prepareStatement(query);
             psmtQuery.setInt(1, orderNo);
@@ -101,7 +101,7 @@ public class GorderService {
         PreparedStatement psmtQuery = null;
 
         try (Connection conn = DriverManager.getConnection(Conf.DB_URL, Conf.DB_USER, Conf.DB_PASSWORD)) {
-            String query = "SELECT O.*, customer_id, game_number FROM gcustomer C, gorder O, game G "
+            String query = "SELECT O.* FROM gcustomer C, gorder O, game G "
                     + "WHERE C.customer_id = O.customer_id AND G.game_number = O.game_number AND C.customer_id = ?";
             psmtQuery = conn.prepareStatement(query);
             psmtQuery.setString(1, customerId);
@@ -130,7 +130,7 @@ public class GorderService {
         return gorderList;
     }
 
-    public static List<Gorder> selectByGameNo(final String gameNo) {
+    public static List<Gorder> selectByGameNo(final int gameNo) {
 
         List<Gorder> gorderList = new ArrayList<>();
 
@@ -138,10 +138,10 @@ public class GorderService {
         PreparedStatement psmtQuery = null;
 
         try (Connection conn = DriverManager.getConnection(Conf.DB_URL, Conf.DB_USER, Conf.DB_PASSWORD)) {
-            String query = "SELECT O.*, customer_id, game_number FROM gcustomer C, gorder O, game G "
+            String query = "SELECT O.* FROM gcustomer C, gorder O, game G "
                     + "WHERE C.customer_id = O.customer_id AND O.game_number = G.game_number AND G.game_number = ?";
             psmtQuery = conn.prepareStatement(query);
-            psmtQuery.setString(1, gameNo);
+            psmtQuery.setInt(1, gameNo);
             rs = psmtQuery.executeQuery();
             while (rs.next()) {
                 Gorder game = setGorder(rs);
@@ -185,7 +185,7 @@ public class GorderService {
             }
             int lastOrderNo = rs.getInt(1);
             int newOrderNo;
-            if (lastOrderNo == 0) {
+            if (lastOrderNo != 0) {
                 newOrderNo = 1;
             } else {
                 newOrderNo = lastOrderNo + 1;
