@@ -15,18 +15,18 @@ public class GorderMain {
         }
 
         // 번호로 검색하기
-        System.out.println("\n번호로 검색하기 - o07\n----------------------------------------");
+        System.out.println("\n번호로 검색하기 - \n----------------------------------------");
         {
-            Gorder gorder = GorderService.selectById("o07");
+            Gorder gorder = GorderService.selectById(07);
             if (gorder != null) {
                 System.out.println(gorder);
             } else {
-                System.out.println("o07 not exist !!");
+                System.out.println("07 not exist !!");
             }
         }
 
         // 고객 번호로 검색하기
-        System.out.println("\n고객 번호로 검색하기 - apple\n----------------------------------------");
+        System.out.println("\n고객 번호로 검색하기\n----------------------------------------");
         List<Gorder> gorderList2 = GorderService.selectByCustomerId("apple");
         for (Gorder gorder : gorderList2) {
             System.out.printf("%-5s : %-12s : %-12s : %-5s : %-12s : %10d : %-20s : %-12s\n", gorder.getOrderNo(), gorder.getOrderDate(),
@@ -35,7 +35,7 @@ public class GorderMain {
 
         // 상품 번호로 검색하기
         System.out.println("\n상품 번호로 검색하기 - p03\n----------------------------------------");
-        List<Gorder> gorderList3 = GorderService.selectByGameNo("p03");
+        List<Gorder> gorderList3 = GorderService.selectByGameNo(23);
         for (Gorder gorder : gorderList3) {
             System.out.printf("%-5s : %-12s : %-12s : %-5s : %-12s : %10d : %-20s : %-12s\n", gorder.getOrderNo(), gorder.getOrderDate(),
                     gorder.getFixedPrice(), gorder.getDiscountRate(), gorder.getPaymentMethod(), gorder.getGameNo(), gorder.getCustomerId());
@@ -43,7 +43,7 @@ public class GorderMain {
 
         // 새로운 주문 추가하기 -> 추가 확인 검새
         System.out.println("\n새로운 주문 추가하기\n----------------------------------------");
-        int newOrderNo = GorderService.insert(12, new Date(), 123, 12, "지갑", 123, "게이머");
+        int newOrderNo = GorderService.insert(12, new Date(), 123, 12, "지갑", 1, "게이머");
         if (newOrderNo != 0) {
             Gorder gorder = GorderService.selectById(newOrderNo);
             if (gorder != null) {
