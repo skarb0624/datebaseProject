@@ -58,3 +58,28 @@ PRIMARY KEY (game_number),
 -- 외래키 설정, game : game_number
 FOREIGN KEY (game_number) REFERENCES game(game_number)
 )
+
+ CREATE TABLE gcustomer (
+	customer_id VARCHAR(20) NOT NULL,
+	customer_name VARCHAR(20) NOT NULL,
+	phone_number VARCHAR(20) NOT NULL,
+	byear INTEGER NOT NULL,
+	bmonth INTEGER NOT NULL,
+	bday INTEGER NOT NULL,
+	email VARCHAR(40) NOT NULL,
+	saved_money INTEGER DEFAULT 0, 
+	PRIMARY KEY (customer_id)
+);
+
+CREATE TABLE gorder (
+	order_number INTEGER NOT NULL,
+	order_date DATE NOT NULL,
+	fixed_price INTEGER DEFAULT 0,
+	discount_rate INTEGER DEFAULT 0,
+	payment_method VARCHAR(20) NOT NULL,
+	game_number INTEGER NOT NULL,
+	customer_id VARCHAR(20) NOT NULL,
+	PRIMARY KEY (order_number),
+	FOREIGN KEY game_number REFERENCES game(game_number),
+	FOREIGN KEY customer_id REFERENCES gcustomer(customer_id)
+);
