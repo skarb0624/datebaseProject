@@ -1,7 +1,7 @@
 # datebaseProject
 ## 프로젝트 인원: 20221007 김남규, 20221026 안윤성
 
-1단계 요구 사항 분석 : 게임 관리 플랫폼 데이터 베이스를 설계, 
+## 1단계 요구 사항 분석 : 게임 관리 플랫폼 데이터 베이스를 설계, 
 * 고객을 관리하기 위해 이메일, 이름, 전화번호, 생년월일, 아이디, 적립금을 저장한다.
 * 생년월일은 연도, 월, 일로 구분하여 저장한다.
 * 회원은 아이디로 식별한다.
@@ -13,10 +13,34 @@
 * 게임 개발사는 여러개의 게임을 업로드 할 수 있고 하나의 게임은 하나의 개발사에서만 만들어진다, 게임 개발사가 게임을 업로드 할때는 제한 연령과 업로드 날짜 정보를 유지해야 한다. 
 * 개발사에 대한 개발사명, 이메일, 전화 번호를 유지해야한다. 개발사는 개발사명으로 식별된다.
 
-2단계 개념적 설계 : E-R 다이어그램
 
+## 2단계 개념적 설계 : E-R 다이어그램
 ![image](https://github.com/user-attachments/assets/f0ba1b99-1c51-4404-b9e8-4f77e7f6755d)
 
-3단계 논리적 설계
+## 3단계 논리적 설계
+릴레이션 만들기
+규칙1: 개체를 릴레이션으로 만들기
+![KakaoTalk_20241222_004032585](https://github.com/user-attachments/assets/3fa3e044-c6fd-4384-b292-af6f25403c12)
 
+규칙2: 다대다 관계를 릴레이션으로 만들기 (게임과 고객의 구매 관계)
+![KakaoTalk_20241222_004032585_01](https://github.com/user-attachments/assets/76596741-2fce-4897-b9ba-ecf4d8bd8b94)
+
+규칙3: 일대다 관계를 외래키로 만들기 (게임사와 게임의 업로드 관계)
+![KakaoTalk_20241222_004032585_02](https://github.com/user-attachments/assets/6e3000ed-b62e-4748-a008-c45b64084bae)
+
+규칙4: 일대일 관계를 외래키로 만들기  
+일대일 관계가 없음
+
+규칙5: 다중값 속성을 릴레이션으로 만들기(장르와 DLC 속성)
+![KakaoTalk_20241222_004032585_03](https://github.com/user-attachments/assets/0ba8360a-09b6-4202-9bdc-ffe7f66a7534)
+
+최종 릴레이션  
+![KakaoTalk_20241222_004032585_04](https://github.com/user-attachments/assets/cab5b695-016a-4bfc-a955-1e0980917a67)
+
+테이블 명세서 작성 결과
 ![image](https://github.com/user-attachments/assets/7024fedf-f3b9-4919-8117-f30b307fd7f1)
+
+## 4단계 물리적 설계
+
+
+## 5단계 구현
